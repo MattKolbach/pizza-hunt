@@ -1,15 +1,14 @@
 const $pizzaList = document.querySelector('#pizza-list');
 
-//get all pizza data, transform into JSON data, run each through the printPizza function with forEach.
 const getPizzaList = () => {
   fetch('/api/pizzas')
-  .then(response => response.json())
-  .then(pizzaListArr => {
-    pizzaListArr.forEach(printPizza);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+    .then(response => response.json())
+    .then(pizzaListArr => {
+      pizzaListArr.forEach(printPizza);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 const printPizza = ({ _id, pizzaName, toppings, size, commentCount, createdBy, createdAt }) => {
@@ -39,5 +38,4 @@ const printPizza = ({ _id, pizzaName, toppings, size, commentCount, createdBy, c
   $pizzaList.innerHTML += pizzaCard;
 };
 
-
-getPizzaList(); //this is called on page load
+getPizzaList();
