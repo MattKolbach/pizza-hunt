@@ -65,8 +65,10 @@ const handlePizzaSubmit = event => {
       alert('Pizza created successfully!');
       console.log(postResponse);
     })
+    //the catch only happens if there is no connection
     .catch(err => {
       console.log(err);
+      saveRecord(formData); //calls saveRecord in idb.js if there is no connection
     });
 };
 
