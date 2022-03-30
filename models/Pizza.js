@@ -1,13 +1,18 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
+//pizza schema object
 const PizzaSchema = new Schema(
   {
     pizzaName: {
-      type: String
+      type: String,
+      required: 'You forgot to name your pizza.', //or true
+      trim: true,
     },
     createdBy: {
-      type: String
+      type: String,
+      required: 'Who is making this pizza?', //or true
+      trim: true,
     },
     createdAt: {
       type: Date,
@@ -16,6 +21,8 @@ const PizzaSchema = new Schema(
     },
     size: {
       type: String,
+      required: true, //can't do a custom here without a custom function
+      enum: ['Personal', 'Small', 'Medium', 'Large', 'Extra Large'],
       default: 'Large'
     },
     toppings: [],
